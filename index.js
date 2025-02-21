@@ -6,6 +6,7 @@ const app = express();
 
 // Import routes
 const userRoutes = require("./routes/userRoutes");
+const internshipRoutes = require("./routes/internshipRoutes")
 
 
 // MongoDB connection string
@@ -25,6 +26,7 @@ app.use(cors());
 // Use routes
 
 app.use("/api", userRoutes);
+app.use("/api", internshipRoutes)
 
 
 // Start server
