@@ -6,13 +6,13 @@ const userRoutes = require("./routes/userRoutes");
 
 // Middleware
 app.use(express.json());
+app.use("/api", userRoutes); 
 
 // Test Route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.use("/api", userRoutes);
 // Start Server
 const PORT = 3000;
 app.listen(PORT, () => {
