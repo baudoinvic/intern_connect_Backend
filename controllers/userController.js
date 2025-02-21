@@ -1,5 +1,4 @@
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
 
 // Get all users
 const getUsers = async (req, res) => {
@@ -24,19 +23,14 @@ const getUserById = async (req, res) => {
 
 // Create a new user
 const createUser = async (req, res) => {
+  const newUser = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: req.body.password, // Don't store plain passwords in production
+  });
+
   try {
-    const { firstname, lastname, email, password, joinedDate } = req.body;
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new User({
-      firstname,
-      lastname,
-      email,
-      password: hashedPassword,
-      joinedDate,
-    });
-
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
@@ -50,16 +44,10 @@ const updateUser = async (req, res) => {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const { firstname, lastname, email, password } = req.body;
-
-    user.firstname = firstname || user.firstname;
-    user.lastname = lastname || user.lastname;
-    user.email = email || user.email;
-
-    if (password) {
-      user.password = await bcrypt.hash(password, 10);
-    }
-
+    user.firstname = req.body.firstname;
+    user.lastname = req.body.lastname;
+    user.email = req.body.email;
+    user.password = req.body.password;
     const updatedUser = await user.save();
     res.json(updatedUser);
   } catch (err) {
@@ -79,6 +67,7 @@ const deleteUser = async (req, res) => {
 
     res.json({ message: "User deleted successfully" });
   } catch (err) {
+    console.error("Error deleting user:", err);
     res.status(500).json({ message: "Error deleting user: " + err.message });
   }
 };
