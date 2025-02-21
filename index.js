@@ -1,19 +1,34 @@
-const express = require("express");
-const cors = require("cors");
 
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 
-// Import user routes
+// Import routes
 const userRoutes = require("./routes/userRoutes");
 
-app.use(express.json());
-app.use(cors()); 
 
-// Use the user routes 
+// MongoDB connection string
+const dbURI =
+  "mongodb+srv://bolingo:sRm0aC7Ssr7fjR1f@cluster0.0xnua.mongodb.net/cumpus";
+
+// Connect to MongoDB Atlas
+mongoose
+  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.log("Error connecting to MongoDB Atlas:", err));
+
+app.use(express.json());
+
+app.use(cors());
+
+// Use routes
+
 app.use("/api", userRoutes);
 
-// Start the server
-const PORT = 5000;
+
+// Start server
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
