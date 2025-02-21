@@ -7,7 +7,7 @@ const app = express();
 // Import routes
 const userRoutes = require("./routes/userRoutes");
 const internshipRoutes = require("./routes/internshipRoutes")
-
+const institutionRoutes = require("./routes/institutionRoutes");
 
 // MongoDB connection string
 const dbURI =
@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use("/api", userRoutes);
 app.use("/api", internshipRoutes)
-
+app.use("/api", institutionRoutes);
 
 // Start server
 const PORT = 3000;
