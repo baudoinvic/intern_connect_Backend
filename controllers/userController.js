@@ -27,7 +27,6 @@ const createUser = async (req, res) => {
   try {
     const { firstname, lastname, email, password, joinedDate } = req.body;
 
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({

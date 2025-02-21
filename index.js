@@ -1,19 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
+// Import user routes
 const userRoutes = require("./routes/userRoutes");
 
-// Middleware
 app.use(express.json());
-app.use("/api", userRoutes); 
+app.use(cors()); 
 
-// Test Route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+// Use the user routes 
+app.use("/api", userRoutes);
 
-// Start Server
+// Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
