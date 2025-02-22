@@ -1,5 +1,5 @@
-const Post = require("./models/PostModel");
 
+const Post = require("./models/PostModel");
 // Create a new internship post
 exports.createPost = async (req, res) => {
   try {
