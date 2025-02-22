@@ -8,6 +8,7 @@ const app = express();
 const userRoutes = require("./routes/userRoutes");
 const internshipRoutes = require("./routes/internshipRoutes")
 const institutionRoutes = require("./routes/institutionRoutes");
+const postRoutes = require("./routes/postRoutes")
 
 // MongoDB connection string
 const dbURI =
@@ -28,6 +29,7 @@ app.use(cors());
 app.use("/api", userRoutes);
 app.use("/api", internshipRoutes)
 app.use("/api", institutionRoutes);
+app.use("/api", postRoutes);
 
 // Start server
 const PORT = 3000;
