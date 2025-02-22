@@ -1,6 +1,6 @@
-const Post = require("../models/PostModel"); // For active internships
-const Application = require("../models/ApplicationModel"); // For applications
-const User = require("../models/UserModel"); // For current interns
+const Post = require("../models/PostModel"); 
+cont receive = require("../models/receiveModel");
+const User = require("../models/UserModel"); 
 
 // Controller function for overview stats
 exports.getOverview = async (req, res) => {
@@ -22,3 +22,6 @@ exports.getOverview = async (req, res) => {
     res.status(500).json({ message: "Error fetching dashboard summary" });
   }
 };
+
+
+

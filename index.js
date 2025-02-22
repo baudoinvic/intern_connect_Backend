@@ -10,6 +10,7 @@ const internshipRoutes = require("./routes/internshipRoutes")
 const institutionRoutes = require("./routes/institutionRoutes");
 const postRoutes = require("./routes/postRoutes")
 const receiveRoutes = require("./routes/receiveRoutes")
+const statsRoutes = require("./routes/statsRoutes")
 
 // MongoDB connection string
 const dbURI =
@@ -32,6 +33,7 @@ app.use("/api", internshipRoutes)
 app.use("/api", institutionRoutes);
 app.use("/api", postRoutes);
 app.use("/api", receiveRoutes);
+app.use("/api", statsRoutes);
 
 // Start server
 const PORT = 3000;
