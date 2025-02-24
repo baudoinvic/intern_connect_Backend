@@ -11,7 +11,7 @@ const institutionRoutes = require("./routes/institutionRoutes");
 const postRoutes = require("./routes/postRoutes")
 const receiveRoutes = require("./routes/receiveRoutes")
 const statsRoutes = require("./routes/statsRoutes")
-const userRoutes = require("./routes/userRoutes");
+// const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 
 
@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(cors());
 
 // Use routes
-app.use("/api", userRoutes);
+// app.use("/api", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", internshipRoutes)
