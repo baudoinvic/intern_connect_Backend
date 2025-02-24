@@ -1,20 +1,14 @@
 const Post = require("../models/PostModel"); 
-cont receive = require("../models/receiveModel");
-const User = require("../models/UserModel"); 
-
 // Controller function for overview stats
 exports.getOverview = async (req, res) => {
   try {
+    // Count active internships
     const activeInternships = await Post.countDocuments({ status: "active" });
 
-    const totalApplicants = await Application.countDocuments();
-    const currentInterns = await Application.countDocuments({
-      status: "Accepted",
-    });
+    const currentInterns = 10; 
 
     res.status(200).json({
       activeInternships,
-      totalApplicants,
       currentInterns,
     });
   } catch (error) {
@@ -22,6 +16,3 @@ exports.getOverview = async (req, res) => {
     res.status(500).json({ message: "Error fetching dashboard summary" });
   }
 };
-
-
-
