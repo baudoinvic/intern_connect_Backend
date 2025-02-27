@@ -26,6 +26,7 @@ const createUser = async (req, res) => {
   const newUser = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password, // Don't store plain passwords in production
   });

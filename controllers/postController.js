@@ -3,7 +3,7 @@ const Post = require("../models/PostModel");
 // Create a new internship post
 exports.createPost = async (req, res) => {
   try {
-    const { title, description, requirements, location, duration, deadline } =
+    const { title, description, requirements, location, duration, deadline,company } =
       req.body;
 
     const newPost = new Post({
@@ -13,6 +13,7 @@ exports.createPost = async (req, res) => {
       location,
       duration,
       deadline,
+      company,
     });
 
     await newPost.save();
