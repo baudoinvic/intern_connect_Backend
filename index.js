@@ -41,7 +41,7 @@ app.use("/api", receiveRoutes);
 app.use("/api", statsRoutes);
 
 // Start server
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

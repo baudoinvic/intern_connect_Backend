@@ -11,7 +11,7 @@ const createInternship = async (req, res) => {
       company,
       location,
       duration,
-      status: status || "Open", // Default to "Open" if not provided
+      status: status || "Open", 
     });
 
     const savedInternship = await newInternship.save();
