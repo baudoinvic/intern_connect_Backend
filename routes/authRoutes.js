@@ -20,10 +20,10 @@ const {
   registerUser,
   loginUser,
   logoutUser,
-  getCurrentUser, // Added getCurrentUser function
+  getCurrentUser, 
 } = require("../controllers/authController");
 
-// const authMiddleware = require("../middlewares/authMiddleware"); 
+
 const authMiddleware = require("../middleware/authMidlware");
 
 const router = express.Router();

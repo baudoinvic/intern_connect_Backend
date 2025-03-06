@@ -112,19 +112,21 @@ const loginUser = async (req, res) => {
 
 // User logout
 const logoutUser = (req, res) => {
+  console.log(req.headers); // Check if token is received
+
   const token = req.header("Authorization")?.split(" ")[1];
 
-  if (!token) return res.status(401).json({ message: "Access Denied" });
+  if (!token) return res.status(401).json({ message: "No token provided" });
 
   try {
     jwt.verify(token, "your_jwt_secret");
-    blacklistedTokens.push(token); // Store token in memory (temporary)
-
+    blacklistedTokens.push(token);
     res.status(200).json({ message: "Logout successful" });
   } catch (err) {
-    res.status(400).json({ message: "Invalid token" });
+    res.status(401).json({ message: "Invalid or expired token" });
   }
 };
+
 
 // Check if token is blacklisted (used in middleware)
 const isTokenBlacklisted = (token) => blacklistedTokens.includes(token);
