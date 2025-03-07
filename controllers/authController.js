@@ -99,12 +99,12 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign(
-      { userId: user._id, role: user.role }, // Include role in token
+      { userId: user._id, role: user.role }, 
       "your_jwt_secret",
       { expiresIn: "1h" }
     );
 
-    res.json({ token, role: user.role }); // Send role to frontend
+    res.json({ token, role: user.role }); 
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -132,17 +132,24 @@ const logoutUser = (req, res) => {
 const isTokenBlacklisted = (token) => blacklistedTokens.includes(token);
 
 // **New API: Get Current User**
-const getCurrentUser = async (req, res) => {
-  try {
-    const user = await User.findById(req.user.userId).select("username role");
+  const getCurrentUser = async (req, res) => {
+    try {
+      const user = await User.findById(req.user.userId).select(
+        "username email role"
+      );
 
-    if (!user) return res.status(404).json({ message: "User not found" });
+      if (!user) return res.status(404).json({ message: "User not found" });
 
-    res.json({ username: user.username, role: user.role });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+      res.json({
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  };
+
 
 module.exports = {
   registerUser,
