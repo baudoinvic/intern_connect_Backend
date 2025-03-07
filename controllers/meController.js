@@ -1,9 +1,10 @@
-// controllers/meController.js
+
+
 const User = require("../models/userModel");
 
 const getCurrentUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select(
+    const user = await User.findById(req.user._id).select(
       "username email role"
     );
 
@@ -18,5 +19,4 @@ const getCurrentUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
 module.exports = { getCurrentUser };
