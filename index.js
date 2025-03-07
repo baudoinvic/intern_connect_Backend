@@ -12,7 +12,7 @@ const postRoutes = require("./routes/postRoutes")
 const receiveRoutes = require("./routes/receiveRoutes")
 const statsRoutes = require("./routes/statsRoutes")
 const authRoutes = require("./routes/authRoutes");
-
+const meRoutes = require("./routes/meRoutes");
 
 
 // MongoDB connection string
@@ -38,6 +38,7 @@ app.use("/api", institutionRoutes);
 app.use("/api", postRoutes);
 app.use("/api", receiveRoutes);
 app.use("/api", statsRoutes);
+app.use("/api", meRoutes);
 
 // Start server
 const PORT = 4000;
