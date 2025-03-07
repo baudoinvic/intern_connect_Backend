@@ -11,7 +11,6 @@ const institutionRoutes = require("./routes/institutionRoutes");
 const postRoutes = require("./routes/postRoutes")
 const receiveRoutes = require("./routes/receiveRoutes")
 const statsRoutes = require("./routes/statsRoutes")
-// const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 
 

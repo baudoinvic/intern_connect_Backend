@@ -20,9 +20,9 @@ const {
   registerUser,
   loginUser,
   logoutUser,
-  getCurrentUser, 
 } = require("../controllers/authController");
 
+const { getCurrentUser } = require("../controllers/meController");
 
 
 const authMiddleware = require("../middleware/authMiddleware")
