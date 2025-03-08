@@ -1,5 +1,4 @@
 
-
 const User = require("../models/userModel");
 
 const getCurrentUser = async (req, res) => {

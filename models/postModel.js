@@ -8,6 +8,8 @@ const postSchema = new mongoose.Schema(
     location: { type: String, required: true },
     duration: { type: String, required: true },
     company: { type: String, required: true },
+    institutionName: { type: String, required: true }, 
+    fieldOfStudy: { type: String, required: true }, 
     deadline: {
       month: { type: Number, required: true },
       day: { type: Number, required: true },
