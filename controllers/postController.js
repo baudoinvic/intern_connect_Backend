@@ -13,7 +13,6 @@ exports.createPost = async (req, res) => {
       duration,
       deadline,
       company,
-      institutionName,
       fieldOfStudy,
     } = req.body;
 
@@ -25,7 +24,6 @@ exports.createPost = async (req, res) => {
       duration,
       deadline,
       company,
-      institutionName,
       fieldOfStudy,
     });
 
